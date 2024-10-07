@@ -1,15 +1,15 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8d3e5; /* lightpink */
-    color: #333; /* darktext */
+    background-color: #ffcccb; /* light pink */
+    color: #333; /* dark text */
     margin: 0;
 }
 
 header {
     text-align: center;
     padding: 20px;
-    background-color: #ff6f91; /* darkpink */
-    color: white; /* white */
+    background-color: #ff6f91; /* dark pink */
+    color: white; /* white text */
 }
 
 main {
@@ -28,9 +28,9 @@ footer {
 
 nav a {
     text-decoration: none;
-    color: #ff6f91; /* darkpink */
+    color: #ff6f91; /* dark pink */
 }
 
 nav a:hover {
-    color: #d5006d; /* darkerpink */
+    color: #d5006d; /* darker pink */
 }
