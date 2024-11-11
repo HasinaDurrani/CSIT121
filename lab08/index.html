@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNG Example 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>PNG Example 1</h1>
+    </header>
+    
+    <nav class="navbar">
+        <a href="index.html" class="active">Home</a>
+        <a href="page2.html">Example 2</a>
+        <a href="page3.html">Example 3</a>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">☰</a>
+    </nav>
+
+    <main>
+        <img src="images/image1.png" alt="Adorable Hello Kitty Head" style="max-width:100%; height:auto;">
+        <p><strong>Format:</strong> PNG</p>
+        <p><strong>Description:</strong> An adorable Hello Kitty head PNG image with a transparent background.</p>
+        <p><strong>Why I Chose It:</strong> I love Hello Kitty, and this image shows how PNG works with transparency.</p>
+        <p><strong>Source:</strong> <a href="https://www.citypng.com/photo/6ea4ffe4/adorable-hello-kitty-head-hd-transparent-png" target="_blank">CityPNG</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PNG Examples</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('responsive');
+        }
+    </script>
+</body>
+</html>
