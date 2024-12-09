@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Data - Bonus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe4e1;
+            color: #ff69b4;
+            text-align: center;
+        }
+        h1 {
+            color: #ff1493;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid #ff69b4;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #ff1493;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff1493;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 20px;
+        }
+        button:hover {
+            background-color: #ff69b4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Directory - Bonus</h1>
+    <button id="toggle-btn" onclick="toggleData()">Get Employee Data</button>
+    <div id="employee-table"></div>
+
+    <script>
+        let isDataVisible = false;
+
+        function toggleData() {
+            const button = document.getElementById('toggle-btn');
+            const tableDiv = document.getElementById('employee-table');
+
+            if (isDataVisible) {
+                tableDiv.innerHTML = '';
+                button.textContent = 'Get Employee Data';
+            } else {
+                fetch('employee.xml')
+                    .then(response => response.text())
+                    .then(data => {
+                        const parser = new DOMParser();
+                        const xml = parser.parseFromString(data, "application/xml");
+                        const employees = xml.getElementsByTagName('employee');
+                        let table = '<table><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Title</th><th>Division</th><th>Building</th><th>Room</th></tr>';
+                        for (let employee of employees) {
+                            table += '<tr>' +
+                                `<td>${employee.getAttribute('id')}</td>` +
+                                `<td>${employee.getElementsByTagName('firstname')[0].textContent}</td>` +
+                                `<td>${employee.getElementsByTagName('lastname')[0].textContent}</td>` +
+                                `<td>${employee.getElementsByTagName('title')[0].textContent}</td>` +
+                                `<td>${employee.getElementsByTagName('division')[0].textContent}</td>` +
+                                `<td>${employee.getElementsByTagName('building')[0].textContent}</td>` +
+                                `<td>${employee.getElementsByTagName('room')[0].textContent}</td>` +
+                                '</tr>';
+                        }
+                        table += '</table>';
+                        tableDiv.innerHTML = table;
+                    })
+                    .catch(error => console.error('Error loading employee data:', error));
+                button.textContent = 'Close Employee Data';
+            }
+
+            isDataVisible = !isDataVisible;
+        }
+    </script>
+</body>
+</html>
